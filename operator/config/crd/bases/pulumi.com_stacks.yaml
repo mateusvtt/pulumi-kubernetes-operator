@@ -753,6 +753,7 @@ spec:
               stack:
                 description: Stack is the fully qualified name of the stack to deploy
                   (<org>/<stack>).
+                maxLength: 42
                 type: string
               targetDependents:
                 description: TargetDependents indicates that dependent resources should
@@ -10392,6 +10393,7 @@ spec:
               stack:
                 description: Stack is the fully qualified name of the stack to deploy
                   (<org>/<stack>).
+                maxLength: 42
                 type: string
               targetDependents:
                 description: TargetDependents indicates that dependent resources should

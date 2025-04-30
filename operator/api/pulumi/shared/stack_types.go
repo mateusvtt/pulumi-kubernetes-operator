@@ -59,12 +59,16 @@ type StackSpec struct {
 
 	// Stack identity:
 
-	// Stack is the fully qualified name of the stack to deploy (<org>/<stack>).
-	// The name is limited to 42 characters because:
+	// Implementation note:
+	// The stack name length is limited to 42 characters because:
 	// 1. Kubernetes has a 63-character limit for label values
 	// 2. The operator appends "-workspace" to create the StatefulSet name
 	// 3. Kubernetes adds a "-<hash>" suffix for the controller-revision-hash label
-	// 4. We need to reserve 21 characters for these suffixes (workspace + hash)
+	// 4. We need to reserve 21 characters for these suffixes:
+	//    - "-workspace-" (11 chars)
+	//    - hash (10 chars)
+
+	// Stack is the fully qualified name of the stack to deploy (<org>/<stack>).
 	// +kubebuilder:validation:MaxLength=42
 	Stack string `json:"stack"`
 	// (optional) Config is the configuration for this stack, which can be optionally specified inline. If this
